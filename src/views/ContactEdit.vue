@@ -33,7 +33,6 @@ export default {
         this.contact = await ContactService.get(id);
       } catch (error) {
         console.log(error);
-        // Chuyển sang trang Not Found đồng thời giữ cho URL không đổi
         this.$router.push({
           name: "notfound",
           params: {
@@ -46,11 +45,13 @@ export default {
     },
     async updateContact(data) {
       try {
+        // ĐÃ BỔ SUNG: Gọi API thực hiện lưu cập nhật xuống cơ sở dữ liệu
         await ContactService.update(this.contact._id, data);
         alert('Liên hệ được cập nhật thành công.');
         this.$router.push({ name: "contactbook" });
       } catch (error) {
         console.log(error);
+        alert('Đã có lỗi xảy ra khi cập nhật liên hệ.');
       }
     },
     async deleteContact() {

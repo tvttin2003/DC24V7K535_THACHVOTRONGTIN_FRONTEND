@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h4>Thêm Liên hệ mới</h4>
+    <h4>Thêm Liên hệ Mới</h4>
     <ContactForm
       :contact="newContact"
       @submit:contact="createContact"
@@ -24,7 +24,7 @@ export default {
         email: "",
         address: "",
         phone: "",
-        favorite: false,
+        hobbies: [], // Khởi tạo mảng trống sẵn ở đây
       },
       message: "",
     };
@@ -33,7 +33,7 @@ export default {
     async createContact(data) {
       try {
         await ContactService.create(data);
-        alert("Liên hệ đã được thêm mới thành công.");
+        alert("Thêm liên hệ mới thành công.");
         this.$router.push({ name: "contactbook" });
       } catch (error) {
         console.log(error);
